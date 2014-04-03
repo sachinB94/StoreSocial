@@ -170,21 +170,19 @@ exports.removePhoneno = function (db,req,res,name,phoneno) {
 	console.log('name = ' + name);
 	console.log('phoneno = ' + phoneno);
 	var username = req.session.username;
-	db.collection('userlist').findAndModify(
-	{	
-		query: {
+	db.collection('userlist').update(
+		{
 			'username': username,
-			'phonelist.name': name
+			'phonelist.name': name,
+			'phonelist.phoneno': phoneno
 		},
-	
-		update: {
+		{
 			$pull: {
-				'phonelist': {
-					'phoneno': phoneno
+				'phonelist.$': {
+					'phoneno.$': phoneno
 				}
 			}
-		}
-	},
+		},
 	function (err,items) {
 		if (!err) {
 			res.redirect('userhome');
