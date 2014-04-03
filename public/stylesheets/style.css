@@ -1,0 +1,55 @@
+body {
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 30px;
+	background-color: #101010;
+	color: #888;
+}
+
+.navbar {
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+div#about {
+	margin-top: 50px;
+	margin-left: 3%;
+	width: 40%;
+	height: 300px;
+	padding-top: 40px;
+	border-radius: 15px;
+}
+
+div#about a {
+	text-decoration: none;
+}
+
+div#registerIndex {
+	margin-top: 50px;
+	margin-right: 3%;
+	width:40%;
+	height: 300px;
+	padding-top: 30px;
+	border-radius: 15px;
+
+}
+
+div#glyphiconButton {
+	margin-top: 10px;
+}
+
+.fontSmall {
+	font-size: 0.8em;
+}
+
+.hideClass {
+	visibility: hidden;
+}
+
+.showClass {
+	visibility: none;
+}
+
+div#newContactBlock {
+	width: 50%;
+}

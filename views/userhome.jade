@@ -1,0 +1,55 @@
+extends layout
+
+block content
+
+	div#newContactBlock.container.pull-left
+		p.h3 Add new contact
+		form.form-horizontal(method='post',action='addContact')
+			div.form-group.control-group
+				label.col-sm-2.controls(for='contactName') Name
+				div.col-sm-10
+					input#contactName.form-control.box-shadow(type='text', placeholder='Name', name='name' required)
+					p.help-block
+			div.form-group.control-group
+				label.col-sm-2(for='contactPhoneno') Phone no.
+				div.col-sm-10.controls
+					input#contactPhoneno.form-control.box-shadow(type='text', placeholder='Phone No.', data-validation-pattern-message="10 digits needed", name='phoneno')
+					p.help-block
+			div.form-group.control-group
+				label.col-sm-2(for='contactEmail') Email
+				div.col-sm-10.controls
+					input#contactEmail.form-control.box-shadow(type='text', placeholder='Email', name='email', data-validation-email-message='')
+					p.help-block
+			div.form-group
+				div.col-sm-offset-2.col-sm-10
+					button.btn.btn-default Add contact
+
+	div.container.table-responsive
+		table.table
+			thread
+				tr
+					th Name
+					th Phone no.
+					th Email
+
+			tbody
+				each contact in phonelist
+					tr
+						td
+							=contact.name
+							em
+								a.fontSmall(href="removeContact/" + contact.name) Remove
+						td
+							each phoneno in contact.phoneno
+								if (phoneno != '')
+									=phoneno
+									em
+										a.fontSmall(href="removePhoneno/" + contact.name + "/" + phoneno) Remove
+									br
+						td
+							each email in contact.email
+								if (email != '')
+									=email
+									em
+										a.fontSmall(href="removeEmail/" + contact.name + "/" + email) Remove
+									br

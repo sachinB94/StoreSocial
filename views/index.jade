@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	div#about.container.text-center.pull-left
+		p.h3 Welcome to 
+			a(href="/") StoreSocial.com
+		p.h4 Store your contact
+		p.h4 Phone number(s) and E-mail(s)
+		p.h4 and
+		p.h4 Access them on the go
+
+	div#registerIndex.container.pull-right
+		p.h3 New here... Register now...
+		br
+		form.form-horizontal(method='post',action='registerSave')
+			div.form-group.control-group
+				div.col-sm-10.controls
+					input#registerUsername.form-control.box-shadow(type='text', placeholder='Username', name='username' required)
+					p.help-block
+			div.form-group.control-group
+				div.col-sm-10.controls
+					input#registerEmail.form-control.box-shadow.validated(type='text', placeholder='Email', name='email', data-validation-email-message='', required)
+					p.help-block
+			div.form-group.control-group
+				div.col-sm-10.controls
+					input#registerPassword.form-control.box-shadow(type='password', placeholder='Password', name='password' required)
+					p.help-block
+			button.btn.btn-default Sign up
+

@@ -1,0 +1,76 @@
+doctype html
+html
+	head
+		title StoreSocial
+		link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+		link(rel='stylesheet', href='/bootstrap/css/bootstrap-theme.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/sidebar.css')
+		<script src='/javascripts/jquery.js'></script>
+		<script src='/javascripts/global.js'></script>
+		<script src='/bootstrap/js/bootstrap.js'></script>
+		<script src='/javascripts/jqBootstrapValidation.js'></script>
+	body
+		nav.navbar.navbar-fixed-top.navbar-inverse(role="navigation")
+			div.container
+				if req.session.username == null
+					div.navbar-header
+						button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href="/") StoreSocial.com
+					div.navbar-collapse.collapse(style="height: 1px;")
+						ul.nav.navbar-nav.navbar-right
+							li
+								form.navbar-form.navbar-right(method="post", action="loginCheck", role="form")
+									div.form-group
+										input.form-control(type="text", placeholder="Username", name="username")
+									div.form-group
+										input.form-control(type="password", placeholder="Password", name="password")
+									button.btn.btn-success Sign in
+							li.dropdown
+								a.navbar-link.dropdown-toggle(href="#", data-toggle="dropdown") Contact us
+								ul.dropdown-menu
+									li.divider
+									li(style="margin-left: 10px; margin-right: 10px; margin-top: 5px;") support@StoreSocial.com
+									li.divider
+				else
+					div.navbar-header
+						button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href="/") StoreSocial.com
+					div.navbar-collapse.collapse(style="height: 1px;")
+						ul.nav.navbar-nav.navbar-right
+							li
+								p.navbar-text Signed in as 
+									a.navbar-link(href="userhome")=req.session.username
+							li
+								a.navbar-link(href="userhome") Dashboard
+							li.dropdown
+								a.navbar-link.dropdown-toggle(href="#", data-toggle="dropdown") Settings
+								ul.dropdown-menu
+									li(style="margin-left: 10px; margin-top: 5px;") Change password :
+									li.divider
+									li
+										form.navbar-form(method="post", action="changePassword", role="form")
+											div.form-group
+												input.form-control(type="password", placeholder="Password", name="password")
+											button.btn.btn-success Change it!
+									li.divider
+									li
+										a(href="deleteUser") Delete account
+							li.dropdown
+								a.navbar-link.dropdown-toggle(href="#", data-toggle="dropdown") Contact us
+								ul.dropdown-menu
+									li.divider
+									li(style="margin-left: 10px; margin-right: 10px; margin-top: 5px;") support@StoreSocial.com
+									li.divider
+							li
+								a.navbar-link(href="logout") Sign out
+
+		block content
