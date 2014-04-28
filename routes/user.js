@@ -173,14 +173,11 @@ exports.removePhoneno = function (db,req,res,name,phoneno) {
 	db.collection('userlist').update(
 		{
 			'username': username,
-			'phonelist.name': name,
-			'phonelist.phoneno': phoneno
+			'phonelist.name': name
 		},
 		{
 			$pull: {
-				'phonelist.$': {
-					'phoneno.$': phoneno
-				}
+				'phonelist.$.phoneno': phoneno
 			}
 		},
 	function (err,items) {
@@ -204,7 +201,7 @@ exports.removeEmail = function (db,req,res,name,email) {
 	},
 	{
 		$pull: {
-			'phonelist.0.email': email
+			'phonelist.$.email': email
 		}
 	},
 	function (err) {
